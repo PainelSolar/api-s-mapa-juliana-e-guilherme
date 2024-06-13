@@ -1,0 +1,28 @@
+1- Crie um projeto no android studio com o  Google Maps Activity 
+2- Entrar na aba AndroidManifest.xml e pegar o link https do google maps api
+3- colar o link no google
+4-logar na plataforma google maps e acessar a pagina “credenciais”
+5-Criar um novo projeto 
+6-Criar uma conta de faturamento
+7-Entrar no projeto e adicionar a conta de faturamento criada
+8-Após isso ele te mostrará sua chave api e o botão de acessar a plataforma google maps
+9-copie a chave e acesse a plataforma
+10-No Android Studio, cole a chave api no campo <meta-data> 
+11-no Google Maps acesse a aba api’s - api’s ativadas 
+12- veja se você possui a maps SDK for android
+13-voltando no android ponha o emulador para rodar para ver se a aplicação esta funcionando corretamente
+14-se tudo estiver correto, o mapa devera aparecer
+EXEMPLO DE TESTE
+15- no MainActivity adicione dois comandos no overfun 
+     . val porto = LatLng( latitude: 41.157944,
+longitude: -8.629105)
+    .mMap.addMarker(MarkerOptions().
+position(porto).title("Cidade do Porto"))
+16-coloque o emulador para rodar e veja se a localização aparece no mapa
+17-novamente no código modifique 
+       Disso:    mMap.moveCamera(CameraUpdateFactory.newLatLng (sydney)) 
+      Para isso:
+mMap.moveCamera(CameraUpdateFactory.newLatLng(porto))
+18-esse código nos dara um ponto principal e um segundo marcador 
+19 podemos também mudar a forma com o mapa aparece com alguns códigos.
+Ex:mMap.manType=GoogleMap.MAP_TYPE_HYBRID|

@@ -1,0 +1,67 @@
+1- Criar uma conta Mapbox
+2- Acesse o Mapbox Studio
+3- Escolha um estilo de mapa
+4- Para integrar seu mapa Mapbox em seu aplicativo web ou móvel, você pode usar as APIs e SDKs do Mapbox. Primeiro, você precisa criar um token para adicionar ao seu gradle. Arquivo de propriedades. No android studio crie um empty activity para seguir com o projeto
+5 - maven {
+            url 'https://api.mapbox.com/downloads/v2/releases/maven'
+            authentication {
+                basic(BasicAuthentication)
+            }
+            credentials {
+                // Do not change the username below.
+                // This should always be `mapbox` (not your username).
+                username = "mapbox"
+                // Use the secret token you stored in gradle.properties as the password
+                password = "Access Token"
+            }
+        }
+
+6 -Certifique-se de que o minSdkVersion do seu projeto esteja na API 21 ou superior.
+android
+
+  defaultConfig {
+      minSdkVersion 21
+  }
+}
+
+7 - Em dependências, adicione uma nova regra de compilação para o Mapbox Maps SDK mais recente para Android.
+Dependências
+{
+  implementation 'com.mapbox.maps:android:10.10.1'
+}
+
+8- abra o mainactivity e cole o codigo a seguir
+
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.mapbox.maps.MapView
+import com.mapbox.maps.Style
+var mapView: MapView? = null
+class MainActivity : AppCompatActivity() {
+override fun onCreate(savedInstanceState: Bundle?) {
+super.onCreate(savedInstanceState)
+setContentView(R.layout.activity_main)
+mapView = findViewById(R.id.mapView)
+mapView?.getMapboxMap()?.loadStyleUri(Style.MAPBOX_STREETS)
+}
+}
+
+9- agora abra o mainactivity.xml e cole o codigo a seguir
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <com.mapbox.maps.MapView
+        xmlns:mapbox="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        mapbox:mapbox_cameraTargetLat="69.3"
+        mapbox:mapbox_cameraTargetLng="34.45"
+        mapbox:mapbox_cameraZoom="10"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
